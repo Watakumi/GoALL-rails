@@ -13,10 +13,22 @@ module Types
     end
 
     field :goal, Types::GoalType, null: false do
-      argument :id, Int, required: false
+      argument :id, Int, required: true
     end
     def goal(id:)
       Goal.find(id)
+    end
+
+    field :labels, [Types::LabelType], null: false
+    def labels
+      Label.all
+    end
+
+    field :label, Types::LabelType, null: false do
+      argument :id, Int, required: true
+    end
+    def label(id:)
+      Label.find(id)
     end
   end
 end
