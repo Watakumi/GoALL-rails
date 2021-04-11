@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_07_130844) do
+ActiveRecord::Schema.define(version: 2021_04_11_161127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,10 +22,21 @@ ActiveRecord::Schema.define(version: 2021_04_07_130844) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "label_goals", force: :cascade do |t|
+    t.bigint "label_id"
+    t.bigint "goal_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["goal_id"], name: "index_label_goals_on_goal_id"
+    t.index ["label_id"], name: "index_label_goals_on_label_id"
+  end
+
   create_table "labels", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "label_goals", "goals"
+  add_foreign_key "label_goals", "labels"
 end
