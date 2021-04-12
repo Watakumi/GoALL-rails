@@ -1,5 +1,5 @@
 module Mutations
-  class LabelCreate < BaseMutation
+  class CreateLabel < BaseMutation
     graphql_name 'CreateLabel'
 
     field :label, Types::LabelType, null: true
