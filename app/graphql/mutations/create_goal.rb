@@ -1,6 +1,6 @@
 module Mutations
-  class GoalCreate < BaseMutation
-    graphql_name 'GoalCreate'
+  class CreateGoal < BaseMutation
+    graphql_name 'CreateGoal'
 
     field :goal, Types::GoalType, null: true
     field :result, Boolean, null: true
